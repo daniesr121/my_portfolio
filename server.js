@@ -13,7 +13,11 @@ app.use((req, res, next) => {
   var log = `${now}: ${req.method} ${req.url}`;
 
   console.log(log);
-  fs.appendFile('server.log', log + '\n');
+  fs.appendFile('server.log', log + '\n',(err,res)=>{
+    if(err) console.log('something goes wrong)
+    else console.log('Successfully logged')    
+    }
+  );
   next();
 });
 
